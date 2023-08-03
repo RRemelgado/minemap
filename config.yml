@@ -1,0 +1,26 @@
+---
+ land_mask: land_mask.tif # land mask used as a reference for rasterization 
+ mining_areas: 00_data/mining_areas.shp # path to the single-polygon shapefile with the mining areas
+ pixel_resolution: 0.0027777778 # rasterization resolution (needed to find samples)
+ directories:
+  coordinates: '00_data/samples_xy/' # directory where to store data on sample coordinates
+  surface_reflectances: '00_data/samples_sr/' # directory where to store data on surface reflectances
+  spectral_differences: '00_data/samples_rmse/' # directory where to store data on inside/outside spectral differences
+  change_year: '/change_year/' # directory where store data on change year
+ reflectances:
+ # landsat GEE colections
+  collections:
+   - ['LANDSAT/LT04/C02/T1_L2',['SR_B1','SR_B2','SR_B3','SR_B4','SR_B5','SR_B7'],[1990,1993]]
+   - ['LANDSAT/LT04/C02/T2_L2',['SR_B1','SR_B2','SR_B3','SR_B4','SR_B5','SR_B7'],[1990,1993]]
+   - ['LANDSAT/LT05/C02/T1_L2',['SR_B1','SR_B2','SR_B3','SR_B4','SR_B5','SR_B7'],[1984,2013]]
+   - ['LANDSAT/LT05/C02/T2_L2',['SR_B1','SR_B2','SR_B3','SR_B4','SR_B5','SR_B7'],[1984,2013]]
+   - ['LANDSAT/LE07/C02/T1_L2',['SR_B1','SR_B2','SR_B3','SR_B4','SR_B5','SR_B7'],[1999,2013]]
+   - ['LANDSAT/LE07/C02/T2_L2',['SR_B1','SR_B2','SR_B3','SR_B4','SR_B5','SR_B7'],[1999,2013]]
+   - ['LANDSAT/LC08/C02/T1_L2',['SR_B2','SR_B3','SR_B4','SR_B5','SR_B6','SR_B7'],[2013,2020]]
+   - ['LANDSAT/LC08/C02/T2_L2',['SR_B2','SR_B3','SR_B4','SR_B5','SR_B6','SR_B7'],[2013,2020]]
+  band_names: ['blue','green','red','nir','swir1','swir2']
+  nr_samples: 50 # max. number of random samples for which to extract surface reflectances
+ change_detection:
+  nr_steps: 100 # minimum number of time-steps to use change detection
+  max_r2: 0.95 # minimum R2. If the R2 of a time-series is greater, it will trigger the search for a change year
+  starting_year: 1992 # default starting year, used if the nr_steps, min_r2, or max_r2 are not respected
