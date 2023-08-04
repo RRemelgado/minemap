@@ -3,10 +3,8 @@
  mining_areas: 00_data/mining_areas.shp # path to the single-polygon shapefile with the mining areas
  pixel_resolution: 0.0027777778 # rasterization resolution (needed to find samples)
  directories:
-  coordinates: '00_data/samples_xy/' # directory where to store data on sample coordinates
-  surface_reflectances: '00_data/samples_sr/' # directory where to store data on surface reflectances
-  spectral_differences: '00_data/samples_rmse/' # directory where to store data on inside/outside spectral differences
-  change_year: '/change_year/' # directory where store data on change year
+  coordinates: '01_analysis/xy/' # directory where to store data on sample coordinates
+  surface_reflectances: '01_analysis/sr/' # directory where to store data on surface reflectances
  reflectances:
  # landsat GEE colections
   collections:
